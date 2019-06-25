@@ -9,7 +9,7 @@ Promise = require('bluebird');
 mongoose.Promise = Promise;
 // connect to mongo db
 var mongoUri = config.mongo.local;
-mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
 mongoose.connection.on('error', function () {
     throw new Error("unable to connect to database: " + mongoUri);
 });

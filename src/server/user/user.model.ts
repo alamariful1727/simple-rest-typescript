@@ -1,9 +1,8 @@
 'use strict';
 
-import * as mongoose from 'mongoose';
-
+import { Document, Schema, Model, model } from 'mongoose';
 // defining all the fields of main user
-export const userSchema = new mongoose.Schema({
+export const userSchema: Schema = new Schema({
   name: {
     type: String,
     required: true,
@@ -27,6 +26,12 @@ export const userSchema = new mongoose.Schema({
   },
 });
 
-// userSchema.plugin(timestamp);
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  type: string;
+  sex: string;
+}
 
-export const User = (module.exports = mongoose.model('User', userSchema));
+// Export the model and return your IUser interface
+export const User: Model<IUser> = model<IUser>('User', userSchema);

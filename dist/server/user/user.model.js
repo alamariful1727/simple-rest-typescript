@@ -1,8 +1,8 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose = require("mongoose");
+var mongoose_1 = require("mongoose");
 // defining all the fields of main user
-exports.userSchema = new mongoose.Schema({
+exports.userSchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: true,
@@ -25,5 +25,5 @@ exports.userSchema = new mongoose.Schema({
         enum: ['female', 'male', 'other'],
     },
 });
-// userSchema.plugin(timestamp);
-exports.User = (module.exports = mongoose.model('User', exports.userSchema));
+// Export the model and return your IUser interface
+exports.User = mongoose_1.model('User', exports.userSchema);

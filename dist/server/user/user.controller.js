@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var User = require('./user.model');
+var user_model_1 = require("./user.model");
 exports.getAllUser = function (req, res) {
     // get all User
-    User.find()
+    user_model_1.User.find()
         .exec()
         .then(function (users) {
         var response = {
@@ -28,7 +28,7 @@ exports.getAllUser = function (req, res) {
 };
 exports.getUser = function (req, res) {
     // get User
-    User.findById(req.params.uid)
+    user_model_1.User.findById(req.params.uid)
         .exec()
         .then(function (user) {
         var response = {
@@ -55,7 +55,7 @@ exports.addUser = function (req, res) {
         return res.send("Expects 'application/json'");
     }
     var name = (_a = req.body, _a.name), email = _a.email, type = _a.type, sex = _a.sex;
-    var user = new User({
+    var user = new user_model_1.User({
         name: name,
         email: email,
         type: type,
@@ -87,7 +87,7 @@ exports.updateUser = function (req, res) {
     if (!req.is('application/json')) {
         return res.send("Expects 'application/json'");
     }
-    User.findOneAndUpdate({ _id: req.params.uid }, req.body)
+    user_model_1.User.findOneAndUpdate({ _id: req.params.uid }, req.body)
         .exec()
         .then(function (user) {
         if (user) {
@@ -112,7 +112,7 @@ exports.updateUser = function (req, res) {
     });
 };
 exports.deleteUser = function (req, res) {
-    User.findByIdAndRemove({ _id: req.params.uid })
+    user_model_1.User.findByIdAndRemove({ _id: req.params.uid })
         .exec()
         .then(function (user) {
         if (user) {

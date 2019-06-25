@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-const User = require('./user.model');
+import { IUser, User } from './user.model';
 export let getAllUser = (req: Request, res: Response) => {
   // get all User
   User.find()
@@ -7,7 +7,7 @@ export let getAllUser = (req: Request, res: Response) => {
     .then((users: any) => {
       const response = {
         count: users.length,
-        users: users.map((user: any) => {
+        users: users.map((user: IUser) => {
           return {
             _id: user._id,
             name: user.name,
